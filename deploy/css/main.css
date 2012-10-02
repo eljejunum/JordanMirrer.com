@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-	background-color: white;
+	background-color: #FFFFF5;
 	text-align:center;
 	
 }
@@ -18,7 +18,7 @@ h1{
 	padding-bottom:10px;
 	margin: 0px;	
 }
-
+/*
 table#wrapper{
 	height:100%;
 	width:100%;
@@ -54,4 +54,29 @@ div#brain{
 	position:absolute;
 	z-index:1500;
 	top:150px;
+}
+*/
+div#brain{
+	text-align:center;
+	padding:30px;
+}
+
+#brain_hover:hover{
+	opacity: 0.8;
+}
+
+div#coming_soon{
+	text-align:center;
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;
+	font-family: Georgia, "garamond", serif;
+	font-style:italic;
+	font-size:3em;
+}
+
+footer {
+	text-align: center;
+	bottom: 25px;
+
 }
