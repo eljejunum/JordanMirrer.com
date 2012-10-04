@@ -59,6 +59,7 @@ div#brain{
 div#brain{
 	text-align:center;
 	padding:30px;
+	border:0px;
 }
 
 #brain_hover:hover{
