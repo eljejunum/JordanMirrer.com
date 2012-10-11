@@ -3,48 +3,84 @@
 
 body {
 	background-color: #FFFFF5;
-	text-align:center;
-	
 }
 
 header h1{
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-weight:100;
 	font-size:6em;
-	letter-spacing:.2em;
 	line-height:.8em;
 	text-align:center;
-	padding-top:0px;
-	padding-bottom:10px;
-	margin: 0px;	
+	padding:0px;
 }
 
-div#pullBar{
-	position:relative;
-	margin-right:auto;
-	margin-left:auto;
+#firstName{
+	letter-spacing:.3em;
+	margin-bottom:0px;
+}
+
+#lastName{
+	letter-spacing:.5em;
+	margin-top:0px;
+	margin-bottom:0px;
 }
 
 div#pullDown{
 	position:absolute;
-	width:981;
-	height:794;
+	top:-750px;
+	width:981px;
+	height:794px;
 	display:block;
-	/*visibility:hidden;*/
 	left:50%;
 	margin-left:-490px;
 	z-index:50;
 	overflow:visible;
+	cursor: pointer;
+}
+#pullDownLinks a{
+	opacity: .6;
+	font-family: Georgia, "garamond", serif;
+	font-style:italic;
+	font-size:2em;
+	text-decoration:none;
+	color: black;
+}
+
+#pullDownLinks a:hover{
+	opacity: .8;
+}
+ul.listContent{
+	list-style-type:none;
+	position: absolute;
+	top:-650px;
+	left:50%;
+	margin-left:50px;
+	z-index:100;
+	opacity: .8;
+	text-align:left;
+	font-family: Georgia, "garamond", serif;
+	font-style:italic;
+	font-size:1em;
+	line-height:300%;
 }
 
 div#brain{
-	text-align:center;
-	padding:30px;
 	border:0px;
+	height: 483px;
+	z-index:0;
+	
 }
 
-#brain_hover:hover{
-	opacity: 0.8;
+#brain_rightHalf{
+	position:absolute;
+	right:50%;
+	margin-right:-20px;
+}
+
+#brain_leftHalf{
+	position:absolute;
+	left:50%;
+	margin-left:-5px;
 }
 
 div#coming_soon{
