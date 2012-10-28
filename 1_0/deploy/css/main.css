@@ -64,23 +64,42 @@ ul.listContent{
 	line-height:300%;
 }
 
-div#brain{
+#brain{
 	border:0px;
 	height: 483px;
 	z-index:0;
-	
 }
 
 #brain_rightHalf{
 	position:absolute;
 	right:50%;
 	margin-right:-20px;
+	top:225px;
 }
 
 #brain_leftHalf{
 	position:absolute;
 	left:50%;
 	margin-left:-5px;
+	top:225px;
+}
+
+#brainCloseUps{
+	position:absolute;
+	height: 483px;
+	left:50%;
+	margin-left:-242px;
+	top:225px;
+}
+
+#rightBrain{
+	visibility:hidden;
+	position:inherit;
+}
+
+#leftBrain{
+	visibility:hidden;
+	position:inherit;
 }
 
 div#coming_soon{

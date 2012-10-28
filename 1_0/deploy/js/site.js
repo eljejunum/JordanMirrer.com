@@ -1,15 +1,14 @@
-//Pull down diagram
+/*JordanMirrer.com main js file.  Requires jquery 1.8.0.  
+* 
+*/
 
 
 $(document).ready(function(){
 
+//PULL DOWN MENU
+
 	//boolean variable for the pull down menu
 	var isDown = false;
-	
-	/* setInterval(function(){
-		console.log("status for is down:" + isDown);
-		}, 1000);
-	*/
 	
 	//Pull Down Menu Animating Down
 	$("#pullDown").click(function(){
@@ -35,6 +34,8 @@ $(document).ready(function(){
 			}
 		});
 	
+//BRAIN HEMISPHERES
+
 	//brain changing on rollover
 	$("#brain_rightHalfMap").hover(
 		function(){
@@ -53,5 +54,21 @@ $(document).ready(function(){
 			$("#brain_leftHalf").css("opacity", "1");
 		}
 	);
-		
+	
+	//change brain out for right side or left side
+	$("#brain_rightHalfMap").click(
+		function(){
+			$("#brain").css("visibility", "hidden");
+			$("#rightBrain").css("visibility", "visible");	
+			
+		}
+	);
+	
+	$("#brain_leftHalfMap").click(
+		function(){
+			$("#brain").css("visibility", "hidden");	
+			$("#leftBrain").css("visibility", "visible");
+		}
+	);
+	
 });
