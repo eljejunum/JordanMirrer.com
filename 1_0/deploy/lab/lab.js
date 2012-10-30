@@ -1,193 +1,173 @@
-var canvas;
-var stage;
-
-//BRICK SPECS
-var BRICK_HEIGHT = 8;
-var BRICK_WIDTH = 40;
-var BRICK_SPACER = 4;
-var BRICKS_PER_ROW = 10;
-var BRICKS_PER_COLUMN = 10;
-
-//PADDLE
-var PADDlE_WIDTH = 60;
-var PADDLE_HEIGHT = 10;
-
-//BALL
-var BALL_RADIUS = 10;
-
-var barHeight;
-var maxValue = 50;
-var count;
-var barValues = [];
-var bars = [];
+/* CONSTANTS */
+	var canvas;
+	var stage;
+	var FPS = 30;
+	
+	var CANVAS_WIDTH = 800;
+	var CANVAS_HEIGHT = 600;
+	var cX = CANVAS_WIDTH/2;
+	var cY = CANVAS_HEIGHT/2;
+	
+	//BRICK SPECS
+	var N_COLUMNS = 10;
+	var N_ROWS = 10;
+	var BRICK_SPACER = 4;
+	var BRICK_WIDTH = (CANVAS_WIDTH - (N_COLUMNS - 1) * BRICK_SPACER) / N_COLUMNS;
+	var BRICK_HEIGHT = BRICK_WIDTH/4;
+	
+	
+	
+	var BRICK_Y_OFFSET = 70;
+	
+	//PADDLE
+	var PADDLE_WIDTH = 60;
+	var PADDLE_HEIGHT = 10;
+	var PADDLE_Y_OFFSET = 30;
+	
+	//BALL
+	var BALL_RADIUS = 10;
+	
+	//PLAYER
+	var TURNS = 3;
+	var GRAVITY = 10;
+	var TICK_TIME = 30;
+	
+/*IVARS*/
+	var brick_counter;
+	var lives;
+	
+	//Paddle Positioning
+	var paddleX;
+	var paddleY;
+	var mouseX;
+	
+	//Ball Positioning
+	var ballLeftBorder;
+	var ballTopBorder;
+	var ballRightBorder;
+	var ballBottomBorder;
+	var vx, vy;  
+	
+	//Shape Objects
+	var brick = new createjs.Shape();
+	var paddle = new createjs.Shape();
+	var ball = new createjs.Shape();
+	var wall = new createjs.Shape();
+	var ceiling = new createjs.Shape();
+	var bottom = new createjs.Shape();
+	var collider = new createjs.Shape();
 
 function init() {
-	if (window.top != window) {
-		document.getElementById("header").style.display = "none";
-	}
 	// create a new stage and point it at our canvas:
-	canvas = document.getElementById("breakOut");
-	stage = new createjs.Stage(canvas);
-
-	// generate some random data (between 4 and 10, the |0 floors (for positive numbers))
-	var numBars = Math.random()*6+4|0;
-	var max = 0;
-	for (var i=0; i<numBars; i++) {
-		var val = Math.random()*maxValue+1|0;
-		if (val > max) { max = val; }
-		barValues.push(val);
-	}
-
-	// calculate the bar width and height based on number of bars and width of canvas:
-	var barWidth = (canvas.width-150-(numBars-1)*barPadding)/numBars;
-	barHeight = canvas.height-150;
-
-	// create a shape to draw the background into:
-	var bg = new createjs.Shape();
-	stage.addChild(bg);
-
-	// draw the "shelf" at the bottom of the graph:
-	// note how the drawing instructions can be chained together.
-	bg.graphics.beginStroke("#444")
-		.moveTo(40, canvas.height-69.5)
-		.lineTo(canvas.width-70, canvas.height-69.5)
-		.endStroke()
-		.beginFill("#222")
-		.moveTo(canvas.width-70, canvas.height-70)
-		.lineTo(canvas.width-60, canvas.height-80)
-		.lineTo(50, canvas.height-80)
-		.lineTo(40, canvas.height-70)
-		.closePath();
-
-	// draw the horizontal lines in the background:
-	for (i=0; i<9; i++) {
-		bg.graphics.beginStroke(i%2 ? "#333" : "#444")
-			.moveTo(50,(canvas.height-80-i/8*barHeight|0)+0.5)
-			.lineTo(canvas.width-60,(canvas.height-80-i/8*barHeight|0)+0.5);
-	}
-
-	// add the graph title:
-	label = new createjs.Text("Bar Graph Example", "bold 30px Arial", "#FFF");
-	label.textAlign = "center";
-	label.x = canvas.width/2;
-	label.y = 20;
-	stage.addChild(label);
-
-	// draw the bars:
-	for (i=0; i<numBars; i++) {
-		// each bar is assembled in it's own Container, to make them easier to work with:
-		var bar = new createjs.Container();
-
-		// this will determine the color of each bar, save as a property of the bar for use in drawBar:
-		var hue = bar.hue = i/numBars*360;
-
-		// draw the front panel of the bar, this will be scaled to the right size in drawBar:
-		var front = new createjs.Shape();
-		front.graphics.beginLinearGradientFill(
-				[createjs.Graphics.getHSL(hue,100,60,0.9),
-				createjs.Graphics.getHSL(hue,100,20,0.75)],
-				[0,1],
-				0,
-				-100,
-				barWidth,0).drawRect(0,-100,barWidth+1,
-				100);
-
-		// draw the top of the bar, this will be positioned vertically in drawBar:
-		var top = new createjs.Shape();
-		top.graphics.beginFill(createjs.Graphics.getHSL(hue,100,70,0.9))
-			.moveTo(10,-10)
-			.lineTo(10+barWidth,-10)
-			.lineTo(barWidth,0)
-			.lineTo(0,0)
-			.closePath();
-
-		// if this has the max value, we can draw the star into the top:
-		if (barValues[i] == max) {
-			top.graphics.beginFill("rgba(0,0,0,0.45)").drawPolyStar(barWidth/2, 31, 7, 5, 0.6, -90).closePath();
-		}
-
-		// prepare the side of the bar, this will be drawn dynamically in drawBar:
-		var right = new createjs.Shape();
-		right.x = barWidth-0.5;
-
-		// create the label at the bottom of the bar:
-		var label = new createjs.Text("Label "+i, "16px Arial", "#FFF");
-		label.textAlign = "center";
-		label.x = barWidth/2;
-		label.maxWidth = barWidth;
-		label.y = 12;
-		label.alpha = 0.5;
-
-		// draw the tab that is placed under the label:
-		var tab = new createjs.Shape();
-		tab.graphics.beginFill(createjs.Graphics.getHSL(hue,100,20))
-			.drawRoundRectComplex(0,1,barWidth,38,0,0,10,10);
-
-		// create the value label that will be populated and positioned by drawBar:
-		var value = new createjs.Text("foo","bold 14px Arial","#000");
-		value.textAlign = "center";
-		value.x = barWidth/2;
-		value.alpha = 0.45;
-
-		// add all of the elements to the bar Container:
-		bar.addChild(right,front,top,value,tab,label);
-
-		// position the bar, and add it to the stage:
-		bar.x = i*(barWidth+barPadding)+60;
-		bar.y = canvas.height-70;
-
-		stage.addChild(bar);
-		bars.push(bar);
-
-		// draw the bar with an initial value of 0:
-		drawBar(bar, 0);
-	}
-
-	// set up the count for animation based on the number of bars:
-	count = numBars*10;
-
-	// start the tick and point it at the window so we can do some work before updating the stage:
-	createjs.Ticker.useRAF = true;
-	// if we use requestAnimationFrame, we should use a framerate that is a factor of 60:
-	createjs.Ticker.setFPS(30);
+	stage = new createjs.Stage("breakOut");
 	createjs.Ticker.addListener(window);
+	stage.enableMouseOver(FPS);
+	
+	//Setu the game stage and play.  
+	setup();
 }
 
 function tick() {
-	// if we are on the last frame of animation then remove the tick listener:
-	if (--count == 1){ createjs.Ticker.removeListener(window); }
+	play(TURNS);
+	}
 
-	// animate the bars in one at a time:
-	var c = bars.length*10-count;
-	var index = c/10|0;
-	var bar = bars[index];
-	drawBar(bar, (c%10+1)/10*barValues[index]);
 
-	// update the stage:
+
+function setup(){
+	//Setup the Bricks
+	brickCounter = 0;  
+	for(var i = 0; i < N_ROWS; i++){
+		for(var j = 0; j < N_COLUMNS; j++){
+			var brickX = j * (BRICK_SPACER + BRICK_WIDTH) + BRICK_SPACER/2;
+			var brickY = BRICK_Y_OFFSET + (i* (BRICK_SPACER + BRICK_HEIGHT));
+			if(i < 2) brick.graphics.beginFill("red").drawRect(brickX, brickY, BRICK_WIDTH, BRICK_HEIGHT);
+			else if (i < 4) brick.graphics.beginFill("orange").drawRect(brickX, brickY, BRICK_WIDTH, BRICK_HEIGHT);
+			else if (i < 6) brick.graphics.beginFill("yellow").drawRect(brickX, brickY, BRICK_WIDTH, BRICK_HEIGHT);
+			else if (i < 8) brick.graphics.beginFill("green").drawRect(brickX, brickY, BRICK_WIDTH, BRICK_HEIGHT);
+			else brick.graphics.beginFill("cyan").drawRect(brickX, brickY, BRICK_WIDTH, BRICK_HEIGHT);
+			stage.addChild(brick);
+			stage.update();
+			brickCounter++;
+		}
+	}
+	
+	//Setup the Paddle
+	paddleX = 0;//cX - PADDLE_WIDTH/2;
+	paddleY = CANVAS_HEIGHT - PADDLE_Y_OFFSET;
+	paddle.graphics.beginFill("black").drawRect(paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+	stage.addChild(paddle);
+	
+	//Setup the Ball
+	var ballX = cX - BALL_RADIUS;
+	var ballY = cY + BALL_RADIUS;
+	ball.graphics.beginFill("black").drawCircle(ballX, ballY, BALL_RADIUS);
+	stage.addChild(ball);
+	vy = GRAVITY;
+	vx = 0;
 	stage.update();
 }
 
-function drawBar(bar, value) {
-	// calculate bar height:
-	var h = value/maxValue*barHeight;
+function play(nTurns){
+	lives = nTurns;
+	movePaddle();
+	moveBall();
+	checkCollision();
+}
 
-	// update the value label:
-	var val = bar.getChildAt(3);
-	val.text = value|0;
-	val.visible = (h>28);
-	val.y = -h+10;
+function movePaddle(){
+	var paddleLeftLimit = PADDLE_WIDTH/2;
+	var paddleRightLimit = CANVAS_WIDTH - (PADDLE_WIDTH/2);
+	
+	stage.onMouseMove = function(evt){
+		mouseX = evt.stageX;
+		
+		if (mouseX <= paddleLeftLimit) {
+		paddleX = 0;
+		} else if (mouseX >= paddleRightLimit) {
+			paddleX = CANVAS_WIDTH - PADDLE_WIDTH;
+		} else { 
+		paddleX = mouseX - PADDLE_WIDTH/2;
+		}
+			
+		paddle.x = paddleX;
+		stage.update();
+	}
+}
 
-	// scale the front panel, and position the top:
-	bar.getChildAt(1).scaleY = h/100;
-	bar.getChildAt(2).y = -h+0.5; // the 0.5 eliminates gaps from numerical precision issues.
+function moveBall(){
+	ball.regX = cX - BALL_RADIUS;
+	ball.regY = cY + BALL_RADIUS;
+	ball.y += vy;
+	ball.x += vx;
+	
+	console.log(ball.x + ", " + ball.y);
+	stage.update();
+}
 
-	// redraw the side bar (we can't just scale it because of the angles):
-	var right = bar.getChildAt(0);
-	right.graphics.clear()
-		.beginFill(createjs.Graphics.getHSL(bar.hue,90,15,0.7))
-		.moveTo(0,0)
-		.lineTo(0,-h)
-		.lineTo(10,-h-10)
-		.lineTo(10,-10)
-		.closePath();
+function checkCollision(){
+	//collider = getObjectUnderPoint(ball.x, ball.y);
+	
+	if (paddle.hitTest(ball.x, ball.y)) {
+		vy = -vy;
+		vx = Math.random()*3
+		console.log("wack");
+	}
+	if (ball.x < 0 || ball.x > CANVAS_WIDTH) {
+		vx = -vx;
+	}
+	if(ball.y < 0 || ball.y > CANVAS_HEIGHT) {
+		vy = -vy;
+		vx = Math.random()*3;
+	}
+}
+
+
+
+function gameOver(){
+	var dead = false;
+	stage.onClick = function(evt) {
+		dead = true;
+		console.log("clicked to end game");
+	}
+	return dead;
 }
