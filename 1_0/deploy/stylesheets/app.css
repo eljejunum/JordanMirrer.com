@@ -1,0 +1,104 @@
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Home - Brains
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+body {
+	background-color: #FFFFF5;
+}
+
+#title h1{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight:100;
+	/*font-size:6em;*/
+	line-height:.8em;
+	text-align:center;
+	padding:0px;
+}
+
+#firstName{
+	letter-spacing:.3em;
+	margin-bottom:0px;
+	
+}
+
+#lastName{
+	letter-spacing:.5em;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+#instructions p{
+	text-align:center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:2em;
+}
+
+/*modal*/
+	#pullDownButton{
+		width:100%;
+	}
+	
+	#pullDownMenu{
+		max-width:960px;
+	}
+	
+	#pullDownLinks{
+		position:absolute;
+		top:50px;
+		left: 50%;
+		text-align:right;
+		
+	}
+	
+	#pullDownBar{
+		position:absolute;
+		top:99%;
+		left:50%;
+		margin-left:-50%;
+	}
+	
+	.reveal-modal{
+		background:url(../images/dropDown_Tile.jpg);
+		background-repeat:repeat;
+		top:0px;
+		min-height:80%;
+	}
+	
+	.reveal-modal img{
+	}
+	
+	.reveal-modal .close-reveal-modal{
+	}
+
+
+/* -----------------------------------------
+   Page Home - Brains
+----------------------------------------- */
+#brainRightHalf{
+	text-align:right;
+	margin-right: -26px;
+}
+
+#brainLeftHalf{
+	text-align:left;
+	margin-left: -26px;
+}
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+
