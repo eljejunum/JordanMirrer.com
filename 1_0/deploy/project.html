@@ -1,57 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Jordan Mirrer: Writing, Creative, Project Management</title>
 
-	<meta name="keyowrds" content="Project Management, Websites, Web development, freelance">
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Jordan Mirrer: Writing, Creative, Project Management</title>
+    <meta name="keyowrds" content="Project Management, Websites, Web development, freelance">
     <meta name="descrption" content="Freelance Writing, Creative, and Project Management services for web, games, digital, and physical production.">
-	<meta name="og:title" content="Jordan Mirrer: Writing, Creative, Project Management">   
-	<meta name="og:description" content="Freelance Writing, Creative, and Project Management services for web, games, digital, and physical production (development coming soon).">
+    <meta name="og:title" content="Jordan Mirrer: Writing, Creative, Project Management">   
+    <meta name="og:description" content="Freelance Writing, Creative, and Project Management services for web, games, digital, and physical production (development coming soon).">
     <meta name="og:url" content="http://www.JordanMirrer.com">
     <meta name="og:image" content="http://JordanMirrer.com/images/brain_06.png">
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
 
-    <link rel="stylesheet" href="css/main.css">
+  <script src="javascripts/modernizr.foundation.js"></script>
 
-	<!--[if lt IE 9]>
-		<script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
-	<![endif]-->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-   <script src="js/site.js"></script>
-   <script src="js/projects.js"></script>
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+	
 
 </head>
-
 <body>
 
-	<nav>
-        
-        <div id="pullDown" width="981" height="794">
-        	<img id="pullDown_back" src="images/dropDown_Open.png" width="981" height="794" alt="">
-			<div id="pullDownLinks">
-				<ul class="listContent">
-					<li><a href="http://jordanmirrer.wordpress.com" target="_blank">blog</a></li>
-					<li><a href="http://KristinaJacinth.com"target="_blank">kristina</a></li>
-					<li><a href="" target="_blank">linkedIn</a></li>
-					<li><a href="" target="_blank">facebook</a></li>
-				</ul>
-			</div>
-        </div>
-    
-    </nav>
+<!--Header and Nav Elements-->  
+  <div class="row">
+    <div class="twelve columns" id="pullDownButton">
+      <a href="#"  data-reveal-id="pullDownMenu"><img src="images/dropDown_closed.png"></a>
+    </div>
+  </div>
 
-    <header>
-    	<h1 id="firstName">JORDAN</h1>
+  <div class="row">
+    <div class="twelve columns" id="title">
+        <h1 id="firstName">JORDAN</h1>
 		<h1 id="lastName">MIRRER</h1>
-    </header>
+      <hr />
+    </div>
+  </div>
+  
+  <!-- Neuron Nav Elements -->
+	<div id="neuron">
+		<img id="neuronImg" src="images/neuron_nav.png">
+	</div>
 	
-	<canvas id="mainCanvas" width="996px" height="996px">
+	<div id="navButtons">
+		<div id="previousBtn">
+			<a><img class="imgSwap" src="images/btn_previous_off.png"></a>
+		</div>
+		<div id="nextBtn">
+			<a><img class="imgSwap" src="images/btn_next_off.png"></a>
+		</div>	
+	</div>
 
-	</canvas>
+ <!--Body Content.  Split one column for neuron, rest is for other content--> 
+
 	
-    <footer>
-		<p>(c) 2012 Jordan Mirrer</p>
-    </footer>
+	<div class="row">
+		<div class="five mobile-four columns offset-by-two" id="projectImgColumn">
+			<img id="projectImg" src="images/project_tester_IMG.jpg">
+		</div>
+		
+		<div class="five mobile-four columns" id="projectInfo">
+			<p id="projectTitle">Laser Cats, in Space!</p>
+			<p id="projectYear">2012</p>
+			<p id="projectClient">Client: The Laser Cat Co.</p>
+			<p id="projectRole">Role: Project Manager, cat wrangler</p>
+			<p id="projectTech">Tech: HTML5</p>
+			<p id="projectPlatform">Platform: Desktop, iPad, Space</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="ten mobile-four columns offset-by-two" id="projectDescription">
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+		</div>
+	</div>
+		
+		
+ 
+ 
+<!--Modal Content-->
+  <div id="pullDownMenu" class="reveal-modal large">
+  	<div class="row">
+        <div class="six mobile-two columns" id="pullDownBody">
+        	<img src="images/dropDown_body.jpg">
+        </div>
+        <div class="six mobile-two columns" id="pullDownLinks">    	
+            <ul class="listContent">
+                <li><a href="http://jordanmirrer.wordpress.com" target="_blank">blog</a></li>
+                <li><a href="http://KristinaJacinth.com"target="_blank">kristina</a></li>
+                <li><a href="" target="_blank">linkedIn</a></li>
+                <li><a href="" target="_blank">facebook</a></li>
+            </ul>              
+        </div>   
+    </div>
+    
+    <div class="row">
+        <!--<div class="twelve mobile-four columns" id="pullDownBar">-->
+            <img id="pullDownBar" src="images/dropDown_bar_2.png">
+        <!--</div>-->
+    </div>
+    
+    <a class="close-reveal-modal">×</a>
+  </div>
+  
+  <div class="reveal-modal-bg"></div>
+<!--End Modal Content-->
 
+   
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js"></script>
+  <script src="javascripts/project.js"></script>
+
+  
+    <script>
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+    </script> 
+  
 </body>
 </html>
