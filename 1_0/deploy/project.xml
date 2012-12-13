@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<projectsInfo>
+	
+	<projects id="alvh">
+		<title>Abraham Lincoln: Vampire Hunter Motion Comic</title>
+		<year>2012</year>
+		<client>Fox</client>
+		<role>Producer</role>
+		<tech>HTML5</tech>
+		<platform>Web (desktop &amp; iPad)</platform>
+		<description>Check out Abraham Lincoln!</description>
+		<image>alvh.jpg</image>
+		<previous> </previous>
+		<next> </next>
+	</projects>
+	
+	<projects id="spiderman_game">
+		<title>The Amazing Spider-Man Online Movie Game</title>
+		<year>2012</year>
+		<client>Sony Pictures</client>
+		<role>Producer</role>
+		<tech>3D Flash</tech>
+		<platform>Web Browsers</platform>
+		<description>After doing one 3D Flash game for Sony Pictures, they were looking for another one to support the release of the Spider-Man reboot.  For this, we decided to go with a "2.5D" style of gameplay (3D graphics with 2D gameplay).  The game features four unique levels and 17 motion captured "Super Hero Moves" all culminating in a final showdown recreating a scene from the film.    </description>
+		<image>spidey_game.jpg</image>
+		<previous> </previous>
+		<next>spiderman_quiz</next>
+	</projects>	
+	
+	<projects id="spiderman_quiz">
+		<title>The Amazing Spider-Man Online Quiz</title>
+		<year>2012</year>
+		<client>Sony Pictures International</client>
+		<role>Copywriter/Producer</role>
+		<tech>Flash</tech>
+		<platform>Web Browsers</platform>
+		<description>There are a bunch of questions about Spider-Man</description>
+		<image>spidey_quiz.jpg</image>
+		<previous> </previous>
+		<next> </next>
+	</projects>	
+
+
+	<projects id="gr2_epk">
+		<title>Ghost Rider: Spirit of Vengeance Official Website</title>
+		<year>2012</year>
+		<client>Sony Pictures</client>
+		<role>Producer</role>
+		<tech>Flash</tech>
+		<platform>Web Browsers</platform>
+		<description>Ghost Rider was back in the second installment and needed a website to advertise his services.</description>
+		<image>gr2_epk.jpg</image>
+		<previous> </previous>
+		<next>gr2_game</next>
+	</projects>		
+
+	<projects id="gr2_game">
+		<title>Ghost Rider: Spirit of Vengeance Online Movie Game</title>
+		<year>2012</year>
+		<client>Sony Pictures</client>
+		<role>Producer</role>
+		<tech>3D Flash</tech>
+		<platform>Web Browsers</platform>
+		<description>Ghost Rider is kicking ass and taking names from his motorcycle.</description>
+		<image>gr2_game.jpg</image>
+		<previous>gr2_epk</previous>
+		<next> </next>
+	</projects>	
+
+	
+	<projects side="left" id="owney">
+		<title>Owney: Tales from the Rails</title>
+		<year>2011</year>
+		<client>Smithsonian Institute</client>
+		<role>Producer</role>
+		<tech>iPad App and Flash Website</tech>
+		<platform>iPad &amp; Web Browsers</platform>
+		<description>Owney was really cute dog from the 1800's that traveled the world.  Everyone loved him.</description>
+		<image>owney.jpg</image>
+		<previous> </previous>
+		<next> </next>
+	</projects>	
+	
+	<projects side="both" id="safehouse">
+		<title>Safe House: The Hunt for Tobin Frost</title>
+		<year>2012</year>
+		<client>Universal Pictures</client>
+		<role>Copywriter/Producer</role>
+		<tech>Flash</tech>
+		<platform>Web Browsers</platform>
+		<description>With the hopes of creating a new franchise, Universal Pictures wanted a deep interactive experience to introduce audiences to the excitement, dangers, and characters of their film, Safe House.  Existing as a feature on the movie's official website, we built a full 3D interactive experience that followed one step behind the characters, going through several of the locations from the film.  As a writer for this content my goal was to extend the fiction and indirectly illustrate the characters.  As a producer my goal was to get it all done in the two months allotted.</description>
+		<image>safehouse.jpg</image>
+		<previous> </previous>
+		<next> </next>
+	</projects>	
+	
+	<projects side="left" id="epic_teaser">
+		<title>Epic: Teaser Websites</title>
+		<year>2012</year>
+		<client>Twentieth Century Fox</client>
+		<role>Producer</role>
+		<tech>Flash &amp; HTML5</tech>
+		<platform>Mobile &amp; Desktop Web Browsers</platform>
+		<description>Fox wanted a website in three days.</description>
+		<image>epic.jpg</image>
+		<previous> </previous>
+		<next> </next>
+	</projects>	
+
+		<!--	
+	<projects id="">
+		<title> </title>
+		<year> </year>
+		<client> </client>
+		<role> </role>
+		<tech> </tech>
+		<platform> </platform>
+		<description> </description>
+		<image> </image>
+		<previous> </previous>
+		<next> </next>
+	</projects>	
+
+	-->	
+</projectsInfo>

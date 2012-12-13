@@ -5,23 +5,39 @@
 //shorthand cheat for window
 var w = $(window);
 
+//Project Detail Variables	
+var title = "hello today";
+var year = "charlie";
+var client = "client 2";
+var role = "role 3";
+var tech = "tech 4";
+var platform = "platform 5";
+var description = "some text 6";
+var imgName = "brain_right_full.png";
+
 //Initialization to parse query string for project details 
 var qsParser = new Array();
 qsParser["cat"] = null;
 qsParser["proj"] = null;
 qs();
+var category = qsParser["cat"];
+var project = qsParser["proj"];
 
-console.log(qsParser["cat"] + " " + qsParser["proj"]);
+console.log(category + " " + project);
 
+
+$(document).ready(function(){
 	//Check window size before all loaded.  
-	neuronReposition();
-
-
-	//console.log("mobile? " + isMobile.any());
+	neuronReposition();	
+	
+	//Write in Project info
+	writeProjectInfo(category, project);
+	
+});
 	
 w.load(function(){
 		
-	//Apply same check on resizing window
+	//Apply size check on resizing window
 	w.resize(function(){
 		neuronReposition();
 	});
@@ -59,8 +75,41 @@ function qs() {
 * @params = qsParser["cat"] and qsParser["proj"] = category and project info from the query string.
 * @return = n/a
 */
-function writeProjectInfo(qsParser["cat"], qsParser["proj"]){
+function writeProjectInfo(category, project){	
+	$.ajax({
+		type: "GET",
+		url: "./project.xml",
+		dataType: "xml",
+		success: function(xml){
+			console.log("Success! " + project);
+			$(xml).find("projects").each(function(){
+				var id = $(this).attr("id");
+				if(id == project){
+					console.log(id);
+					title = $(this).find("title").text();
+					year = $(this).find("year").text();
+					client = $(this).find("client").text();
+					role = $(this).find("role").text();
+					tech = $(this).find("tech").text();
+					//platform = $(this).find("platform").text();
+					description = $(this).find("description").text();
+					imgName = $(this).find("image").text();
+					nextProj = $(this).find("next").text();
+					previousProj = $(this).find("previous").text();
 
+					$("#projectTitle").html(title);
+					$("#projectYear").html(year);
+					$("#projectClient").html("Client: " + client);	
+					$("#projectRole").html("Role: " + role);
+					$("#projectTech").html("Tech: " + tech);
+					//$("#projectPlatform").html("Platform: " + platform);
+					$("#projectDescription").html("<p>" + description + "</p>");
+					$("#projectImgColumn").html('<img id="projectImg" src="images/projects/' + imgName +'">');	
+					
+				}
+			});
+		}		
+	});
 }
 
 /**
