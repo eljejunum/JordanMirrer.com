@@ -1,6 +1,6 @@
 /******************************************************************
-Site Name: 
-Author: 
+Site Name: JordanMirrer.com	
+Author: Jordan Mirrer
 
 Stylesheet: Mixins & Constants Stylesheet
 
@@ -51,19 +51,24 @@ Need help w/ choosing your colors? Try this site out:
 http://0to255.com/
 *********************/
 
+@page-color:		#FFFFF5;
+@black:             #000;
+@white:             #fff;
+@orange-circle:		#B64C2D;
+@bones-pink:        #f01d4f;
+@bones-blue:        #1990db;
+
+@background-color:	@page-color;
+@link-color:        @orange-circle;
+@link-hover:        darken(@link-color, 9%);
+@title-color:		@black;
+
+
 @alert-yellow:      #ebe16f;
 @alert-red:         #fbe3e4;
 @alert-green:       #e6efc2;
 @alert-blue:        #d5edf8;
 
-@black:             #000;
-@white:             #fff;
-
-@bones-pink:        #f01d4f;
-@bones-blue:        #1990db;
-
-@link-color:        @bones-pink;
-@link-hover:        darken(@link-color, 9%);
 
 /*
 Here's a great tutorial on how to
@@ -76,8 +81,11 @@ http://sachagreif.com/sass-color-variables/
 TYPOGRAPHY
 *********************/
 
-@sans-serif:         "Helvetica Neue", Helvetica, Arial, sans-serif; 
-@serif:              "Georgia", Cambria, Times New Roman, Times, serif; 
+@title-font:		Times New Roman, Times, serif;
+@body-font:			"Georgia", serif;
+@sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif; 
+@serif:             "Georgia", Cambria, Times New Roman, Times, serif; 
+
 
 
 /* 	To embed your own fonts, use this syntax
@@ -165,7 +173,7 @@ USAGE: .border-radius(4px);
 
 
 /*********************
-TRANISTION
+TRANSITION
 *********************/
 
 /* .transition(all,2s); */

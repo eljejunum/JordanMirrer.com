@@ -1,6 +1,6 @@
 /******************************************************************
-Site Name:
-Author:
+Site Name: JordanMirrer.com	
+Author: Jordan Mirrer
 
 Stylesheet: Tablet & Small Desktop Stylesheet
 
@@ -33,18 +33,17 @@ HEADER STYLES
 
 .header {}
 
-	#logo {}
+	#logo, #logo a {
+		word-spacing: 10em;
+	}
 
 /*********************
 NAVIGATION STYLES
 *********************/
 
 .nav {
-	background: #eee;
-	border: 0;
 
 	li {
-		float: left;
 		position: relative;
 
 		a {
@@ -69,7 +68,6 @@ NAVIGATION STYLES
 		ul.sub-menu,
 		ul.children {
 			margin-top: 0;
-			border: 1px solid #ccc;
 			border-top: 0;
 			position: absolute;
 			display: none;
@@ -82,7 +80,6 @@ NAVIGATION STYLES
 					border-right: 0;
 					display: block;
 					width: 180px;
-					border-bottom: 1px solid #ccc;
 
 					&:hover,
 					&:focus {}

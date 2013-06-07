@@ -1,6 +1,6 @@
 /******************************************************************
-Site Name:
-Author:
+Site Name: JordanMirrer.com
+Author: Jordan Mirrer
 
 Stylesheet: Base Mobile Stylesheet
 
@@ -38,10 +38,11 @@ html, body {
 	/* height: 100%; */
 }
 body {
-	font-family: @serif;
+	font-family: @body-font;
 	font-size: 100%;
 	line-height: 1.5;
-	color: #565656;
+	color: @black;
+	background-color: @background-color;
 }
 
 /********************
@@ -128,7 +129,7 @@ a, a:visited {
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	font-family: @sans-serif;
+	font-family: @title-font;
 	text-rendering: optimizelegibility;
 	font-weight: 400;
 	/*
@@ -174,9 +175,44 @@ h5, .h5 {
 *********************/
 
 .header {
-	#inner-header {}
+	#inner-header {
+		#dropdown-header{
+			position:absolute;
+			background-image: url('../images/dropdown-bg.png');
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			z-index: 100;
+			height: 700px;
+			top: -600px;
+			
+			#menu-button{
+				position: absolute;
+				bottom: 40px;
+				left: 50%;
+				margin-left: -35px;
+				
+				font-size: 1.3em;
+				
+				a{
+					text-decoration: none;
+				}
+				
+			}
+		}
+	}
 
-	#logo {}
+	#logo, #logo a  {
+		margin: 10px 0 10px 0;
+		text-align: center;
+		text-transform: uppercase;
+		font: @title-font;
+		font-size: 2em;
+		color: @title-color;
+		text-decoration: none;
+		line-height: 1em;
+		letter-spacing: .3em;  
+		
+	}
 
 	nav {
 		ul.nav {
@@ -204,17 +240,17 @@ and more scalable.
 */
 
 .nav {
-	border: 1px solid #ccc;
-	border-bottom: 0;
 
 	li {
 
 		a {
 			display: block;
-			text-decoration: none;
 			padding: 10px 10px;
-			background-color: #eee;
-			border-bottom: 1px solid #ccc;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: @black;
+			
+			&:after{ content: '.'; }	
 
 			/*
 			remember this is for mobile ONLY, so there's no need
@@ -223,8 +259,20 @@ and more scalable.
 			keep this file as small as possible!
 			*/
 			&:hover, &:focus {
-
+				
 			}
+		
+		.menu-bio{
+			background: @background-color url('../images/icon-bio.png') no-repeat left top;
+			width: 285px;
+			height: 285px;
+			
+			&:hover{
+				background-position: right top;
+			}
+		}
+		
+		
 		}
 
 		&:first-child {}

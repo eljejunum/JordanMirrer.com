@@ -227,7 +227,7 @@ function bones_main_nav() {
     wp_nav_menu(array(
     	'container' => false,                           // remove nav container
     	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-    	'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
+    	'menu' => __( 'The Dropdown Menu', 'bonestheme' ),  // nav name
     	'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
     	'theme_location' => 'main-nav',                 // where it's located in the theme
     	'before' => '',                                 // before the menu

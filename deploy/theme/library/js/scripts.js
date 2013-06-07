@@ -67,7 +67,19 @@ jQuery(document).ready(function($) {
     
 	
 	// add all your scripts here
+	var isMenuDown = false;
 	
+	$('#menu-trigger').click(function(){
+		if(!isMenuDown){
+			$('#dropdown-header').animate({top: '+=600'}, 500, function(){});
+			$('#menu-trigger').text('CLOSE.');
+			isMenuDown = true;
+		} else {
+			$('#dropdown-header').animate({top: '-=600'}, 500, function(){});
+			$('#menu-trigger').text('MENU.');
+			isMenuDown = false;
+		}
+	});
  
 }); /* end of as page load scripts */
 
